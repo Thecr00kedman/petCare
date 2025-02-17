@@ -4,6 +4,7 @@ import { serviceData } from "../../assets/data/data";
 
 const Services = () => {
   return (
+    
     <div className="w-11/12 mx-auto my-0">
         <div className="flex flex-col items-center mx-0 my-12 gap-4">
         <div className="flex text-xl text-center">
