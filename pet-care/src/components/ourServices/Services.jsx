@@ -1,14 +1,12 @@
 import React from "react";
 import { serviceData } from "../../assets/data/data";
-
-
 const Services = () => {
   return (
 
     <div className="w-11/12 mx-auto my-0">
         <div className="flex flex-col items-center mx-0 my-12 gap-4">
         <div className="flex text-xl text-center">
-          
+
             <h4 className="text-lg text-[#04CE78]">Our Services</h4>
         </div>
         <div className="text-5xl text-800 text-center font-semibold text-[#000D44]">Our Pet Care Specialties <br />
