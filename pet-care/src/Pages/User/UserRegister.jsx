@@ -1,5 +1,5 @@
 import React from 'react'
-import Signupuser from '@/components/userReg/Signupuser'
+import Signupuser from '@/components/userReg/SignupUser'
 const UserRegister = () => {
   return (
     <div className='w-3/6 mx-auto my-1'>
