@@ -7,10 +7,18 @@ export default {
   ],
   theme: {
   	extend: {
+		colors: {
+			blublack: "#000D44", // Custom color
+		  },
   		boxShadow: {
   			custom: '0px 3px 12px rgba(33, 50, 93, 0.5)',
-  			btn: '0px 4px 12px 4px rgba(0,0,0,0.1)'
+  			btn: '0px 4px 12px 4px rgba(0,0,0,0.1)',
+			customS:"0px 10px 50px rgba(0, 0, 0, 0.08)"
   		},
+		colors:{
+            cusotomPara:"#788094",
+			secondary:"#5470ff"
+		},
   		borderRadius: {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',

@@ -6,11 +6,14 @@ import Vets from './Pages/vets'
 import Userlogin from './Pages/User/Userlogin'
 import UserRegister from './Pages/User/UserRegister'
 import Doctor from './Pages/Doctor'
+import ContactPage from './ContactPage'
+import ScrollProgress from './ScrollProgress'
 function App() {
 
   return (
     <>
   <Router>
+    <ScrollProgress/>
   <Navwrapper>
   <Routes>
     <Route element={<Home/>} path='/'/>
@@ -18,6 +21,7 @@ function App() {
     <Route element={<Userlogin/>} path='/login'/>
     <Route element={<UserRegister/>} path='/sign-up'/>
     <Route element={<Doctor/>} path='/details'/>
+    <Route element={<ContactPage/>} path='/contact-us' />
   </Routes>
   </Navwrapper>
   </Router>

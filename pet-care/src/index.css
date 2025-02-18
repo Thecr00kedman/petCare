@@ -70,7 +70,28 @@ body {
     @apply bg-background text-foreground;
   }
 }
+@layer utilities {
+  /* Global Scrollbar Customization */
+  /*  */
 
+  /* WebKit (Chrome, Safari) */
+  *::-webkit-scrollbar {
+    display: none; /* For horizontal scrollbars */
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #ffffff; /* Light background for the track */
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background: #b6b6b6; /* Your custom blue */
+    border-radius: 6px;
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    background: #f7f7fa; /* Darker blue on hover */
+  }
+}
 
 
 
