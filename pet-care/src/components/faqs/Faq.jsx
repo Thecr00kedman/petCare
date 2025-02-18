@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import {
   Accordion,
-  AccordionSummary,
-  AccordionDetails,
-  Typography,
-} from "@mui/material";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
+
 import BG from "../../assets/bg-faq.jpg";
 import Doctor from "../../assets/doctor2.png";
 import { vetFAQs } from "../../assets/data/data";
@@ -24,7 +24,15 @@ const Faq = () => {
               Any Question?
             </div>
           </div>
-          <div className="flex flex-col gap-4">
+          <Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger className='text-white'>Is it accessible?</AccordionTrigger>
+    <AccordionContent className='text-white'>
+      Yes. It adheres to the WAI-ARIA design pattern.
+    </AccordionContent>
+  </AccordionItem>
+</Accordion>
+          {/* <div className="flex flex-col gap-4">
           {vetFAQs.map((item,index)=>(
             <Accordion key={index}>
             <AccordionSummary
@@ -42,7 +50,7 @@ const Faq = () => {
           </Accordion>
           ))}
           
-          </div>
+          </div> */}
         </div>
         <div className="w-5/12 h-full">
           <img

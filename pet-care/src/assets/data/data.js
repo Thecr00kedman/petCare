@@ -68,67 +68,98 @@ export const serviceData = [
 // veterinaryData.js
 
 export const veterinaryDetails = [
-  {
-    id: 1,
-    name: "Dr. Emily Parker",
-    photo: Team1, // Replace with real photo URL
-    specialty: "Veterinary Surgeon",
-  },
-  {
-    id: 2,
-    name: "Dr. John Smith",
-    photo: Team2, // Replace with real photo URL
-    specialty: "Pet Dermatology",
-  },
-  {
-    id: 3,
-    name: "Dr. Olivia Brown",
-    photo: Team3, // Replace with real photo URL
-    specialty: "Emergency Care",
-  },
-  {
-    id: 4,
-    name: "Dr. Daniel White",
-    photo: Team4, // Replace with real photo URL
-    specialty: "Animal Dentistry",
-  },
-  {
-    id: 5,
-    name: "Dr. Sarah Johnson",
-    photo: Team5, // Replace with real photo URL
-    specialty: "Internal Medicine",
-  },
-  {
-    id: 6,
-    name: "Dr. Robert Lee",
-    photo: Team6, // Replace with real photo URL
-    specialty: "Orthopedics",
-  },
-  // {
-  //   id: 7,
-  //   name: 'Dr. Ava Miller',
-  //   photo: 'https://via.placeholder.com/150', // Replace with real photo URL
-  //   specialty: 'Veterinary Ophthalmology',
-  // },
-  // {
-  //   id: 8,
-  //   name: 'Dr. James Taylor',
-  //   photo: 'https://via.placeholder.com/150', // Replace with real photo URL
-  //   specialty: 'Internal Medicine',
-  // },
-  // {
-  //   id: 9,
-  //   name: 'Dr. Laura Martinez',
-  //   photo: 'https://via.placeholder.com/150', // Replace with real photo URL
-  //   specialty: 'Exotic Pet Care',
-  // },
-  // {
-  //   id: 10,
-  //   name: 'Dr. William Harris',
-  //   photo: 'https://via.placeholder.com/150', // Replace with real photo URL
-  //   specialty: 'Surgery',
-  // },
-];
+    {
+      id: 1,
+      name: "Dr. Emily Parker",
+      photo: Team1, // Replace with real photo URL
+      specialty: "Veterinary Surgeon",
+      bio: "Dr. Emily Parker is an experienced veterinary surgeon specializing in complex surgeries and treatments for pets.",
+      experience: "10 years",
+      fee: "$120 per consultation",
+    },
+    {
+      id: 2,
+      name: "Dr. John Smith",
+      photo: Team2, // Replace with real photo URL
+      specialty: "Pet Dermatology",
+      bio: "Dr. John Smith is a skilled pet dermatologist focusing on skin diseases and allergies in pets.",
+      experience: "8 years",
+      fee: "$100 per consultation",
+    },
+    {
+      id: 3,
+      name: "Dr. Olivia Brown",
+      photo: Team3, // Replace with real photo URL
+      specialty: "Emergency Care",
+      bio: "Dr. Olivia Brown provides emergency medical care for pets in critical conditions.",
+      experience: "5 years",
+      fee: "$150 per consultation",
+    },
+    {
+      id: 4,
+      name: "Dr. Daniel White",
+      photo: Team4, // Replace with real photo URL
+      specialty: "Animal Dentistry",
+      bio: "Dr. Daniel White is an expert in animal dentistry, offering treatments for dental health and hygiene.",
+      experience: "7 years",
+      fee: "$90 per consultation",
+    },
+    {
+      id: 5,
+      name: "Dr. Sarah Johnson",
+      photo: Team5, // Replace with real photo URL
+      specialty: "Internal Medicine",
+      bio: "Dr. Sarah Johnson specializes in internal medicine, focusing on diagnosing and treating internal conditions of pets.",
+      experience: "12 years",
+      fee: "$110 per consultation",
+    },
+    {
+      id: 6,
+      name: "Dr. Robert Lee",
+      photo: Team6, // Replace with real photo URL
+      specialty: "Orthopedics",
+      bio: "Dr. Robert Lee is an orthopedic specialist who treats bone and joint issues in animals.",
+      experience: "9 years",
+      fee: "$130 per consultation",
+    },
+    // {
+    //   id: 7,
+    //   name: 'Dr. Ava Miller',
+    //   photo: 'https://via.placeholder.com/150', // Replace with real photo URL
+    //   specialty: 'Veterinary Ophthalmology',
+    //   bio: 'Dr. Ava Miller specializes in eye care for animals, including surgeries and treatments for vision-related problems.',
+    //   experience: '6 years',
+    //   fee: '$140 per consultation',
+    // },
+    // {
+    //   id: 8,
+    //   name: 'Dr. James Taylor',
+    //   photo: 'https://via.placeholder.com/150', // Replace with real photo URL
+    //   specialty: 'Internal Medicine',
+    //   bio: 'Dr. James Taylor is a highly skilled internal medicine vet with a focus on chronic illnesses and treatments.',
+    //   experience: '15 years',
+    //   fee: '$125 per consultation',
+    // },
+    // {
+    //   id: 9,
+    //   name: 'Dr. Laura Martinez',
+    //   photo: 'https://via.placeholder.com/150', // Replace with real photo URL
+    //   specialty: 'Exotic Pet Care',
+    //   bio: 'Dr. Laura Martinez specializes in the care of exotic pets, including reptiles, birds, and small mammals.',
+    //   experience: '4 years',
+    //   fee: '$100 per consultation',
+    // },
+    // {
+    //   id: 10,
+    //   name: 'Dr. William Harris',
+    //   photo: 'https://via.placeholder.com/150', // Replace with real photo URL
+    //   specialty: 'Surgery',
+    //   bio: 'Dr. William Harris is a surgical specialist who performs a variety of complex surgeries for pets.',
+    //   experience: '11 years',
+    //   fee: '$150 per consultation',
+    // },
+  ];
+  
 
 export const workProcess = [
   {
