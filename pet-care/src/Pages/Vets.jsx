@@ -1,4 +1,4 @@
-import React from "react";
+import {useState,React} from "react";
 import { veterinaryDetails } from "../assets/data/data";
 import VetBanner from "../assets/banner2.png";
 import {
@@ -11,6 +11,31 @@ import {
 import { Link } from "react-router-dom";
 
 const Vets = () => {
+  const[filters,setFilters]=useState({
+    gender:'',
+    rating:"",
+    location:"",
+    specialty:"",
+    fee:""
+  })
+  const[search,setSearch]=useState({
+  })
+  const handSearchChange=(e)=>{
+    setSearch((prev)=>({
+      ...prev,
+      [e?.target?.name]:e?.target?.value
+    }))
+  }
+  console.log(search, 'this is search')
+  const handleChange = (field,value) => {
+    setFilters((prev) => ({
+      ...prev,
+      [field]: value,
+    
+    }));
+    console.log("Updated Selection:", setFilters);
+  };
+  console.log(filters,'these are selected filters')
   return (
     <div>
 {/* <div className="w-full flex flex-row justify-between">
@@ -33,66 +58,81 @@ const Vets = () => {
             className="w-3/12 border-r-2 text-center border-blue-200"
             name="city"
             id="city"
+            onChange={(e)=>handSearchChange(e)}
           >
             <option value="lucknow">Lucknow</option>
             <option value="kolkata">Kolkata</option>
             <option value="delhi">Delhi</option>
           </select>
-          <input className="w-9/12 h-12" type="search" name="search" />
+          <input onChange={(e)=>handSearchChange(e)}className="w-9/12 h-12" type="search" name="search" />
         </div>
       </div>
       <div>
-        <div className="grid grid-cols-4 p-4 bg-white items-center w-11/12 mx-auto my-4 gap-2">
+        <div className="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-5 p-4 bg-white items-center w-11/12 mx-auto my-4 gap-2">
           <div>
-            <Select className="w-full">
+            <Select onValueChange={(value)=>handleChange('gender',value)} className="w-full">
               <SelectTrigger className="w-full">
                 <SelectValue placeholder="Gender" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="light">Light</SelectItem>
-                <SelectItem value="dark">Dark</SelectItem>
-                <SelectItem value="system">System</SelectItem>
+                <SelectItem value="male">male</SelectItem>
+                <SelectItem value="male">female</SelectItem>
+                <SelectItem value="male">others</SelectItem>
               </SelectContent>
             </Select>
           </div>
           <div>
-            <Select className="w-full">
+            <Select onValueChange={(value)=>handleChange('rating',value)} className="w-full">
               <SelectTrigger className="w-full">
-                <SelectValue placeholder="Ratings" />
+                <SelectValue placeholder="ratings" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="light">Light</SelectItem>
-                <SelectItem value="dark">Dark</SelectItem>
-                <SelectItem value="system">System</SelectItem>
+                <SelectItem value="1">1</SelectItem>
+                <SelectItem value="2">2</SelectItem>
+                <SelectItem value="3">3</SelectItem>
+                <SelectItem value="4">4</SelectItem>
+                <SelectItem value="5">5</SelectItem>
               </SelectContent>
             </Select>
           </div>
           <div>
-            <Select className="w-full">
+            <Select onValueChange={(value)=>handleChange('location',value)} className="w-full focus:none">
               <SelectTrigger className="w-full">
                 <SelectValue placeholder="Location" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="light">Light</SelectItem>
-                <SelectItem value="dark">Dark</SelectItem>
-                <SelectItem value="system">System</SelectItem>
+                <SelectItem value="lucknow">Lucknow</SelectItem>
+                <SelectItem value="delhi">Delhi</SelectItem>
+                <SelectItem value="kolkata">Kolkata</SelectItem>
               </SelectContent>
             </Select>
           </div>
           <div>
-            <Select className="w-full">
+            <Select onValueChange={(value)=>handleChange('specialty',value)} className="w-full">
               <SelectTrigger className="w-full">
                 <SelectValue placeholder="Specialty" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="light">Light</SelectItem>
-                <SelectItem value="dark">Dark</SelectItem>
-                <SelectItem value="system">System</SelectItem>
+                <SelectItem value="surgeon">Surgeon</SelectItem>
+                <SelectItem value="orthopedics">Orthopedics</SelectItem>
+                <SelectItem value="dentist">Dentist</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+          <div>
+            <Select onValueChange={(value)=>handleChange('fee',value)} className="w-full">
+              <SelectTrigger className="w-full">
+                <SelectValue placeholder="fee" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="light">0-500</SelectItem>
+                <SelectItem value="dark">500-1000</SelectItem>
+                <SelectItem value="system">1000-1500</SelectItem>
               </SelectContent>
             </Select>
           </div>
         </div>
-        <div className="grid bg-white px-4 py-6 grid-cols-2 gap-6 w-11/12 mx-auto my-0">
+        <div className="grid bg-white px-4 py-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-6 w-11/12 mx-auto my-0">
           {veterinaryDetails?.map((item, index) => (
             <div
               className="flex flex-row gap-4 border-b-2 border-black"

@@ -11,8 +11,8 @@ const Footer = () => {
   return (
     <div className="flex flex-col">
       <div style={{ backgroundImage: `url(${FooterBg})` }}>
-        <div className="flex flex-row p-16">
-          <div className="w-4/12 flex flex-col gap-4">
+        <div className="sm:flex-col md:flex-col lg:flex-row lg:flex p-16">
+          <div className="w-4/12 flex md:w-full lg:w-4/12 sm:my-4 md:my-4 sm:w-full flex-col gap-4">
             <div className="w-40 h-24">
               <img
                 className="w-full h-full object-contain"
@@ -39,7 +39,7 @@ const Footer = () => {
               <div className="text-[#969EB2]">+(402) 763 282 46</div>
             </div>
           </div>
-          <div className="grid grid-cols-3 w-8/12">
+          <div className="grid sm:grid-cols-1 md:grid-cols-2 md:w-full lg:grid-cols-3 w-8/12">
             <div className="flex flex-col gap-3">
               <div className="text-white text-3xl mb-8">Quick Links</div>
               <a href="#" className="text-[#969EB2] hover:text-red-500">

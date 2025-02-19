@@ -12,7 +12,7 @@ const Services = () => {
         <div className="text-5xl text-800 text-center font-semibold text-[#000D44]">Our Pet Care Specialties <br />
          Technical service</div>
         </div>
-      <div className="grid grid-cols-4 items-center gap-4 m-4">
+      <div className="grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 items-center gap-4 m-4">
         {serviceData?.map((item,index)=>(
             <div className="flex flex-col items-center bg-white px-3 py-6 gap-4 border-2 border-blue-100 rounded-3xl shadow-0px 2px 20px rgba(0, 0, 0, 0.06)" key={index}>
           <div className="text-5xl">

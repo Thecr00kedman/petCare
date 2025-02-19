@@ -19,16 +19,29 @@ const Testimonials = () => {
           </div>
         </div>
         <div>
-          <Swiper
-            spaceBetween={30}
-            slidesPerView={2}
-            loop={true}
-            autoplay={{
-              delay: 2000,
-              disableOnInteraction: false,
-            }}
-            modules={[Autoplay]}
-          >
+        <Swiper
+  spaceBetween={30}
+  loop={true}
+  autoplay={{
+    delay: 2000,
+    disableOnInteraction: false,
+  }}
+  modules={[Autoplay]} // ✅ Fixed: Closing array properly
+  breakpoints={{
+    640: {
+      slidesPerView: 1, // Show 2 slides on small screens
+      spaceBetween: 20,  // Space between slides
+    },
+    768: {
+      slidesPerView: 1, // Show 3 slides on medium screens
+      spaceBetween: 30,
+    },
+    1024: {
+      slidesPerView: 2, // Show 4 slides on large screens
+      spaceBetween: 40,
+    },
+  }}
+>
             {testimonials?.map((item, index) => (
               <SwiperSlide key={index}>
                 <div className="flex flex-col gap-8 p-6 bg-[#F5F7FA] rounded-2xl">

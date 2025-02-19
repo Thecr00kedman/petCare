@@ -7,7 +7,8 @@ import DoctorsSlider from '../components/sliders/DoctorsSlider'
 import Work from '../components/workProcess/Work'
 import Faq from '../components/faqs/Faq'
 import Testimonials from '../components/sliders/Testimonials'
-
+import Counter from '../components/countUp/Counter'
+import Blogs from '../components/blogs/Blogs'
 
 const Home = () => {
   return (
@@ -17,9 +18,11 @@ const Home = () => {
        <Services/>
        <Cta/>
        <DoctorsSlider/>
+       <Counter/>
        <Work/>
        <Faq/>
        <Testimonials/>
+       <Blogs/>
       
     </div>
   )

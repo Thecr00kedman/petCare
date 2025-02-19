@@ -7,6 +7,9 @@ import Team6 from "../team6.jpg";
 import Testimonial1 from "../testimonial1.jpg";
 import Testimonial2 from "../testimonial2.jpg";
 import Testimonial3 from "../testimonial3.jpg";
+import Blog1 from '../blog1.jpg'
+import Blog3 from '../blog3.jpg'
+import Blog2 from '../blog2.jpg'
 
 import {
   faCalendarCheck,
@@ -264,4 +267,35 @@ export const testimonials = [
     name: "Sarah Wilson",
     location: "Miami, USA",
   },
+];
+
+export const blogData = [
+  {
+    id: 1,
+    title: "The Importance of Regular Vet Checkups",
+    author: "Dr. Emily Watson",
+    date: "February 15, 2025",
+    image: Blog1, // Replace with actual image URL
+  },
+  {
+    id: 2,
+    title: "How to Keep Your Pet Healthy and Happy",
+    author: "John Doe",
+    date: "January 28, 2025",
+    image: Blog3
+  },
+  {
+    id: 3,
+    title: "Top 5 Dog Breeds for Families",
+    author: "Sarah Johnson",
+    date: "March 5, 2025",
+    image: Blog2,
+  },
+  // {
+  //   id: 4,
+  //   title: "Understanding Your Cat's Behavior",
+  //   author: "Michael Brown",
+  //   date: "December 20, 2024",
+  //   image: Blog1,
+  // },
 ];
