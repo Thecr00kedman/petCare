@@ -4,7 +4,9 @@
 
 body {
   background-color: #f5f7fa;
+  font-family: 'Inter', sans-serif;
 }
+
 
 @layer base {
   :root {

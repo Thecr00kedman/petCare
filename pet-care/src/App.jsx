@@ -8,6 +8,10 @@ import UserRegister from './Pages/User/UserRegister'
 import Doctor from './Pages/Doctor'
 import ContactPage from './ContactPage'
 import ScrollProgress from './ScrollProgress'
+import BookAppointment from './Pages/BookAppointment'
+import UserPanel from './Pages/User/UserPanel'
+import Appointments from './components/appointment/Appointments'
+import ProfileWrapper from './components/profileWrapper/ProfileWrapper'
 function App() {
   
   return (
@@ -22,6 +26,13 @@ function App() {
     <Route element={<UserRegister/>} path='/sign-up'/>
     <Route element={<Doctor/>} path='/details'/>
     <Route element={<ContactPage/>} path='/contact-us' />
+    <Route element={<BookAppointment />} path='/book-appointment'/>
+   <Route element={<ProfileWrapper/>}>
+   <Route element={<UserPanel />} path='/profile'/>
+
+{/* User Profile Routes */}
+<Route element={<Appointments/>} path='/appointments'/>
+   </Route>
   </Routes>
   </Navwrapper>
   </Router>

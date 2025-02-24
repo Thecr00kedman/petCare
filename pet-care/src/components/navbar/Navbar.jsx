@@ -40,7 +40,7 @@ const Navbar = () => {
                 location.pathname === path ? "text-blue-300" : "text-black"
               }`}
             >
-              <Link className="text-xl font-semibold" to={path}>
+              <Link className="text-xl " to={path}>
                 {label}
               </Link>
             </li>
@@ -71,7 +71,7 @@ const Navbar = () => {
               }`}
             >
               <Link
-                className="text-xl font-semibold"
+                className="text-xl "
                 to={path}
                 onClick={() => setIsOpen(false)}
               >

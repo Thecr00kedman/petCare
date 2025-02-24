@@ -51,11 +51,11 @@ const Vets = () => {
     <div className="my-24">
       
       <div
-        className="w-3/5 mx-auto shadow-sm my-8"
+        className="w-10/12 md:w-10/12 lg:w-3/5 mx-auto shadow-sm my-8"
       >
         <div className="flex flex-row">
           <select
-            className="w-3/12 border-r-2 text-center border-blue-200"
+            className="text-xs cursor-pointer md:text-sm lg:text-sm w-3/12 border-r-2 text-center border-blue-200"
             name="city"
             id="city"
             onChange={(e)=>handSearchChange(e)}
@@ -64,7 +64,7 @@ const Vets = () => {
             <option value="kolkata">Kolkata</option>
             <option value="delhi">Delhi</option>
           </select>
-          <input onChange={(e)=>handSearchChange(e)}className="w-9/12 h-12" type="search" name="search" />
+          <input onChange={(e)=>handSearchChange(e)}className="w-9/12 h-12 px-4" type="search" name="search" />
         </div>
       </div>
       <div>
@@ -132,31 +132,32 @@ const Vets = () => {
             </Select>
           </div>
         </div>
-        <div className="grid bg-white px-4 py-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-6 w-11/12 mx-auto my-0">
+        <div className="grid bg-white px-4 py-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-12 w-11/12 mx-auto my-0">
           {veterinaryDetails?.map((item, index) => (
-            <div
-              className="flex flex-row gap-4 border-b-2 border-black"
+            <div className='flex-col flex gap-4'>
+              <div
+              className="flex flex-row gap-4"
               key={index}
             >
-              <div className="h-48 w-2/12">
+              <div className="h-48 w-6/12">
                 <img
                   className="h-full w-full object-contain"
                   src={item?.photo}
                   alt="photo"
                 />
               </div>
-              <div className="w-7/12 flex flex-col gap-2">
+              <div className="w-6/12 flex flex-col gap-2">
                 {/* <div className="text-xl font-semibold">{item?.name}</div> */}
                 <Link to="/details" className="text-xl font-semibold">
                   {item?.name}
                 </Link>
-                <div className="text-sm">{item?.experience}</div>
-                <div className="text-sm">{item?.specialty}</div>
-                <div className="text-sm">{item?.bio}</div>
-                <div className="text-sm">{item?.fee}</div>
+                <div className="text-xs text-[#b0b0b0] sm:text-xs md:text-sm lg:text-sm">{item?.experience}</div>
+                <div className="text-xs text-[#b0b0b0] sm:text-xs md:text-sm lg:text-sm">{item?.specialty}</div>
+                <div className="text-xs text-[#b0b0b0] sm:text-xs md:text-sm lg:text-sm">{item?.bio}</div>
+                <div className="text-xs text-[#b0b0b0] sm:text-xs md:text-sm lg:text-sm">{item?.fee}</div>
               </div>
-              <div className="flex flex-col gap-4 items-center justify-center w-3/12">
-                <div>Available Today</div>
+             <div className="hidden lg:flex lg:flex-col lg:mx-auto lg:my-2 gap-4 justify-center w-3/12 sm:hidden">
+                {/* <div>Available Today</div> */}
                 <div>
                   <button className="p-2 text-white shadow-custom w-40 rounded-lg bg-blue-300">
                     Contact Clinic
@@ -169,6 +170,21 @@ const Vets = () => {
                 </div>
               </div>
             </div>
+              <div className="lg:hidden flex sm:flex-row sm:mx-auto sm:my-2 gap-4 items-center justify-center sm:w-full w-full">
+                {/* <div>Available Today</div> */}
+                <div className='w-full text-sm'>
+                  <button className="p-2 text-white shadow-custom w-full sm:text-sm rounded-lg bg-blue-300">
+                    Contact Clinic
+                  </button>
+                </div>
+                <div className='w-full text-sm' >
+                  <button className="p-2 text-white shadow-custom w-full sm:text-sm rounded-lg bg-green-300">
+                    Book Appointment
+                  </button>
+                </div>
+              </div>
+            </div>
+              
           ))}
         </div>
       </div>

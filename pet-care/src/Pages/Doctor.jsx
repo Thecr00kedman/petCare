@@ -14,17 +14,17 @@ import { Textarea } from "@/components/ui/textarea";
 import { Phone, MapPin, Mail, Briefcase } from "lucide-react";
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 
-veterinaryDetails;
 const Doctor = () => {
+  veterinaryDetails;
   return (
     <div className="w-full my-4">
-      <div className="flex w-11/12 mx-auto my-0 flex-row gap-4">
+      <div className="flex w-11/12 mx-auto my-0 flex-col md:flex-row lg:flex-row gap-4">
         {veterinaryDetails?.length > 0 && (
           <div
-            className="flex w-full flex-row gap-14"
+            className="flex w-full flex-col md:flex-row lg:flex-row gap-14"
             key={veterinaryDetails[0]?.id}
           >
-            <div className=" flex flex-col h-auto items-center gap-3 rounded-md w-3/12 px-4 py-6 bg-white">
+            <div className=" flex flex-col h-auto items-center gap-3 rounded-md w-full md:w-3/12 lg:w-3/12 px-4 py-6 bg-white">
               <div className="px-4">
                 <img src={veterinaryDetails[0]?.photo} alt="photo" />
               </div>
@@ -94,7 +94,7 @@ const Doctor = () => {
                 </div>
               </div>
             </div>
-            <div className="flex flex-col w-9/12 px-6 py-8 rounded-md bg-white gap-6">
+            <div className="flex flex-col w-full md:w-9/12 lg:w-9/12 px-3 py-4 rounded-md bg-white gap-6">
               <div className="flex flex-col gap-4">
                 <div className="text-3xl">Introduction</div>
                 <span className="text-[#788094]">
@@ -209,47 +209,63 @@ const Doctor = () => {
               </div>
               <div className="flex flex-col gap-4">
                 <div className="text-3xl">Clinic</div>
-                <div className="flex flex-col gap-3">
-                <div className="flex w-full flex-row gap-4 border-b-2 p-3">
-                  <div className="w-2/12 overflow-hidden border-2 rounded-md border-[#dbd8d8]">
+                <div className="flex flex-col gap-12">
+                <div className="flex flex-col md:flex-col w-full lg:flex-row gap-4 border-b-2">
+                 <div className="flex flex-row w-full lg:w-4/12 gap-4">
+                 <div className="w-4/12 overflow-hidden border-2 rounded-md border-[#dbd8d8]">
                     <img className='w-full h-full object-contain'src={Clinic} alt="" />
                   </div>
-                  <div className="w-6/12">
+                  <div className="w-8/12">
                     <div className="text-lg font-semibold">Clinic Name</div>
                     <div>
                       <span>Clinic Address road delhi-300012</span>
                     </div>
-
                     <div>Consultation Fee:Rupees 180</div>
-                  </div>
-                  <div className="flex flex-col items-start gap-4 w-4/12">
+                    <div className="hidden flex-col items-start gap-4 w-9/12">
                     <div>Clinic Rating</div>
                     <div className="flex flex-row items-start gap-4">
                       <Button className='bg-[#5470FF] shadow-btn hover:bg-[#455fe3]'>View Details</Button>
                       <Button className='bg-[#22C55E] shadow-btn hover:bg-[#1f9349]'>Book Appointment</Button>
                     </div>
                   </div>
-                </div>
-                <div className="flex w-full flex-row gap-4 border-b-2 p-3">
-                  <div className="w-2/12 border-2 rounded-s-md border-[#dbd8d8]">
-                    <img src={Clinic} alt="" />
                   </div>
-                  <div className="w-6/12">
+                 </div>
+                  <div className="sm:flex flex-col lg:flex items-start gap-4 w-full md:w-4/12">
+                    <div>Clinic Rating</div>
+                    <div className="flex flex-row items-start gap-4 w-full">
+                      <Button className='bg-[#5470FF] shadow-btn text-xs md:text-sm lg:text-sm hover:bg-[#455fe3] w-full'>View Details</Button>
+                      <Button className='bg-[#22C55E] shadow-btn text-xs md:text-sm lg:text-sm hover:bg-[#1f9349] w-full'>Book Appointment</Button>
+                    </div>
+                  </div>
+                </div>                               
+                <div className="flex flex-col md:flex-col w-full lg:flex-row gap-4 border-b-2">
+                 <div className="flex flex-row w-full lg:w-4/12 gap-4">
+                 <div className="w-4/12 overflow-hidden border-2 rounded-md border-[#dbd8d8]">
+                    <img className='w-full h-full object-contain'src={Clinic} alt="" />
+                  </div>
+                  <div className="w-8/12">
                     <div className="text-lg font-semibold">Clinic Name</div>
                     <div>
                       <span>Clinic Address road delhi-300012</span>
                     </div>
-
                     <div>Consultation Fee:Rupees 180</div>
-                  </div>
-                  <div className="flex flex-col items-start gap-4 w-4/12">
+                    <div className="hidden flex-col items-start gap-4 w-9/12">
                     <div>Clinic Rating</div>
                     <div className="flex flex-row items-start gap-4">
-                    <Button className='bg-[#5470FF] shadow-btn hover:bg-[#455fe3]'>View Details</Button>
-                    <Button className='bg-[#22C55E] shadow-btn hover:bg-[#1f9349]'>Book Appointment</Button>
+                      <Button className='bg-[#5470FF] shadow-btn hover:bg-[#455fe3]'>View Details</Button>
+                      <Button className='bg-[#22C55E] shadow-btn hover:bg-[#1f9349]'>Book Appointment</Button>
                     </div>
                   </div>
-                </div>
+                  </div>
+                 </div>
+                  <div className="sm:flex flex-col lg:flex items-start gap-4 w-full md:w-4/12">
+                    <div>Clinic Rating</div>
+                    <div className="flex flex-row items-start gap-4 w-full">
+                      <Button className='bg-[#5470FF] shadow-btn text-xs md:text-sm lg:text-sm hover:bg-[#455fe3] w-full'>View Details</Button>
+                      <Button className='bg-[#22C55E] shadow-btn text-xs md:text-sm lg:text-sm hover:bg-[#1f9349] w-full'>Book Appointment</Button>
+                    </div>
+                  </div>
+                </div>                               
                 </div>
               </div>
               <div>
@@ -278,7 +294,7 @@ const Doctor = () => {
                   </div>
                   <div className="flex flex-col gap-6 w-full">
                     <div className="text-3xl">Patient Stories</div>
-                    <div className="flex border-b-2 px-2 py-4 border-[#eae8e8] flex-row gap-4 w-full">
+                    <div className="flex border-b-2 px-2 py-4 border-[#eae8e8] flex-col md:flex-row lg:flex-row gap-4 w-full">
                       <div className="w-1/12">
                         <div className="w-12 h-12 rounded-full text-white bg-black items-center flex justify-center">
                           P
@@ -295,16 +311,16 @@ const Doctor = () => {
                           Visited for Stress
                         </div>
                         <div>I recommend this Vet</div>
-                        <div className="flex flex-row items-center gap-6">
+                        <div className="flex flex-row items-center gap-2">
                           <div>Happy With:</div>
-                          <ul className="flex flex-row gap-2 items-center">
-                            <li className="border-2 border-[#b0b0b0] p-1 rounded-sm cursor-pointer hover:bg-[#5470ff] transition-all duration-300 hover:text-white">
+                          <ul className="grid grid-cols-3 items-center gap-2">
+                            <li className="text-xs md:text-sm lg:text-sm border-2 border-[#b0b0b0] p-1 rounded-sm cursor-pointer hover:bg-[#5470ff] transition-all duration-300 hover:text-white">
                               Doctor friendliness
                             </li>
-                            <li className="border-2 border-[#b0b0b0] p-1 rounded-sm cursor-pointer hover:bg-[#5470ff] transition-all duration-300 hover:text-white">
-                              Explanation of the health issue
+                            <li className="text-xs md:text-sm lg:text-sm border-2 border-[#b0b0b0] p-1 rounded-sm cursor-pointer hover:bg-[#5470ff] transition-all duration-300 hover:text-white">
+                              Quick resolution
                             </li>
-                            <li className="border-2 border-[#b0b0b0] p-1 rounded-sm cursor-pointer hover:bg-[#5470ff] transition-all duration-300 hover:text-white">
+                            <li className=" text-xs md:text-sm lg:text-sm border-2 border-[#b0b0b0] p-1 rounded-sm cursor-pointer hover:bg-[#5470ff] transition-all duration-300 hover:text-white">
                               Value for money
                             </li>
                           </ul>

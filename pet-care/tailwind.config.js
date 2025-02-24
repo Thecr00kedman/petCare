@@ -7,6 +7,9 @@ export default {
   ],
   theme: {
   	extend: {
+		fontFamily: {
+			poppins: ["Poppins", "sans-serif"], // Define 'poppins' as a custom font
+		  },
 		colors: {
 			blublack: "#000D44", // Custom color
 		  },
