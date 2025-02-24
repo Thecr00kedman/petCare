@@ -15,9 +15,8 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Link } from 'react-router-dom';
-
-
-
+import usePost from '../../customHooks/usePost';
+import { useNavigate } from 'react-router-dom';
 const Signupuser = () => {
     const form = useForm({
         resolver: zodResolver(SignupSchema),
@@ -27,10 +26,20 @@ const Signupuser = () => {
           password:""
         },
       })
-      const onSubmit=(data)=> {
-        // Do something with the form values.
-        // ✅ This will be type-safe and validated.
+      const navigate=useNavigate()
+      const URL = import.meta.env.VITE_BACKEND_URL;
+      
+      
+      const { postData, loading, error } = usePost(`${URL}/user/user-signup`);
+    
+      const onSubmit=async(data)=> {
         console.log(data)
+       const response= await postData(data)
+       console.log(response,'line 37')
+       if(response?.status===true){
+        navigate('/dashboard')
+       }
+      
       }
   return (
     <div className='my-16 mx-auto w-3/5 flex gap-4 flex-col '>
