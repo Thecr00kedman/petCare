@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState,useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules"; // Import Swiper and SwiperSlide
 import "swiper/css";
@@ -6,9 +6,30 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import Comma from "../../assets/comma.png";
 import "swiper/css/navigation";
+import useGet from "@/customHooks/useGet";
 import { testimonials } from "../../assets/data/data";
 
+
 const Testimonials = () => {
+  //  const [testimonials, setTestimonials] = useState([]);
+  //   const [pageLoading, setPageLoading] = useState(true);
+  //   const [pageError, setPageError] = useState(null);
+  //   const URL=import.meta.env.VITE_BACKEND_URL
+  //   const { data, loading, error } = useGet(`${URL}/user/get-testimonials`);
+  //   console.log(data,'line 19')
+  //   useEffect(() => {
+  //     if (data) {
+  //       setTestimonials(data?.testimonials);
+  //       setPageLoading(false)
+  //     }
+  //     if(loading){
+  //       setPageLoading(true)
+  //     }
+  //     if(error){
+  //        setPageError(error)
+  //     }
+  //   }, [data]);
+  //   console.log(testimonials,'line 22')
   return (
     <div className=" bg-white">
       <div className="flex w-11/12 mx-auto flex-col p-16 gap-7">

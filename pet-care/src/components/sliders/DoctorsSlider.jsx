@@ -5,8 +5,13 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { veterinaryDetails } from "../../assets/data/data";
 import BG from '../../assets/bgAll.jpg'
+import useGet from "@/customHooks/useGet";
+
 
 const DoctorsSlider = () => {
+  const URL=import.meta.env.VITE_BACKEND_URL
+  const{data,error,loading}=useGet(`${URL}/user/get-featured-doctors`)
+  console.log(data,'line number 13')
   return (
     <div 
     style={{
@@ -48,17 +53,15 @@ const DoctorsSlider = () => {
                   spaceBetween: 40,
                 },
               }}>
-          {veterinaryDetails?.map((item, index) => (
+          {data?.foundDentist?.map((item, index) => (
             <SwiperSlide key={index}>
              <div className="flex flex-col gap-3 px-2 py-4 rounded-xl my-4 mx-2 p-4 group relative cursor-pointer">
   <div className="flex relative">
     <img
-      src={item?.photo}
+      src={item?.personalDetails?.image}
       className="w-100 h-100 object-contain"
       alt=""
     />
-
-    
     <div className="absolute bottom-0 left-0 right-0 p-4 text-white opacity-0 group-hover:opacity-100 group-hover:translate-y-0 translate-y-full transition-all duration-700">
       <div className="flex gap-4 justify-center">
        
@@ -92,9 +95,9 @@ const DoctorsSlider = () => {
   </div>
 
   <div className="text-xl font-semibold text-center text-[#000D44]">
-    {item?.name}
+    {item?.personalDetails?.prefix}.&nbsp;{item?.personalDetails?.Firstname}&nbsp;{item?.personalDetails?.lastName}
   </div>
-  <div className="text-sm text-center text-[#788094]">{item?.specialty}</div>
+  <div className="text-sm text-center text-[#788094]">{item?.personalDetails?.specialty}</div>
 </div>
 
             </SwiperSlide>

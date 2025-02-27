@@ -16,11 +16,21 @@ import UserPayment from "./components/payment/UserPayment";
 import UserProfile from "./components/profile/UserProfile";
 import Dashboard from "./components/dashboard/Dashboard";
 import Complaints from "./components/complaints/Complaints";
-import { ToastContainer,Bounce } from "react-toastify";
+import PrivateRoute from "./PrivateRoute";
+import AuthProvider from "./context/AuthProvider";
+import { ToastContainer, Bounce } from "react-toastify";
+import Cookies from "js-cookie";
+import AuthRedirect from "./components/AuthRedirect";
 
 function App() {
+  const userCookies = Cookies.get("userInfo");
+  let userInfo;
+  if (userCookies) {
+    userInfo = JSON.parse(userCookies);
+  }
   return (
     <>
+    <AuthProvider>
       <Router>
         <ToastContainer
           position="top-center"
@@ -40,24 +50,31 @@ function App() {
           <Routes>
             <Route element={<Home />} path="/" />
             <Route element={<Vets />} path="/vets" />
-            <Route element={<Userlogin />} path="/login" />
-            <Route element={<UserRegister />} path="/sign-up" />
+
             <Route element={<Doctor />} path="/details" />
             <Route element={<ContactPage />} path="/contact-us" />
             <Route element={<BookAppointment />} path="/book-appointment" />
+            <Route element={<AuthRedirect />}>
+                <Route element={<Userlogin />} path="/login" />
+                <Route element={<UserRegister />} path="/sign-up" />
+              </Route>
             <Route element={<ProfileWrapper />}>
               <Route element={<UserPanel />} path="/profile" />
 
+              
               {/* User Profile Routes */}
-              <Route element={<Appointments />} path="/appointments" />
-              <Route element={<UserPayment />} path="/payments" />
-              <Route element={<UserProfile />} path="/my-profile" />
-              <Route element={<Dashboard />} path="/dashboard" />
-              <Route element={<Complaints />} path="/complaints" />
+              <Route element={<PrivateRoute />}>
+                <Route element={<Appointments />} path="/appointments" />
+                <Route element={<UserPayment />} path="/payments" />
+                <Route element={<UserProfile />} path="/my-profile" />
+                <Route element={<Dashboard />} path="/dashboard" />
+                <Route element={<Complaints />} path="/complaints" />
+              </Route>
             </Route>
           </Routes>
         </Navwrapper>
       </Router>
+      </AuthProvider>
     </>
   );
 }

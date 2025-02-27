@@ -1,15 +1,35 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion"
+} from "@/components/ui/accordion";
 
 import BG from "../../assets/bg-faq.jpg";
 import Doctor from "../../assets/doctor2.png";
 import { vetFAQs } from "../../assets/data/data";
+import useGet from "@/customHooks/useGet";
 const Faq = () => {
+  const [faqs, setFaqs] = useState([]);
+  const [pageLoading, setPageLoading] = useState(true);
+  const [pageError, setPageError] = useState(null);
+  const URL=import.meta.env.VITE_BACKEND_URL
+  const { data, loading, error } = useGet(`${URL}/user/get-faq`);
+  console.log(data,'line 19')
+  useEffect(() => {
+    if (data) {
+      setFaqs(data?.foundFaq);
+      setPageLoading(false)
+    }
+    if(loading){
+      setPageLoading(true)
+    }
+    if(error){
+       setPageError(error)
+    }
+  }, [data]);
+  console.log(faqs,'line 22')
   return (
     <div
       className="flex flex-col w-full"
@@ -24,33 +44,18 @@ const Faq = () => {
               Any Question?
             </div>
           </div>
-          <Accordion type="single" collapsible>
-  <AccordionItem value="item-1">
-    <AccordionTrigger className='text-white'>Is it accessible?</AccordionTrigger>
-    <AccordionContent className='text-white'>
-      Yes. It adheres to the WAI-ARIA design pattern.
-    </AccordionContent>
-  </AccordionItem>
-</Accordion>
-          {/* <div className="flex flex-col gap-4">
-          {vetFAQs.map((item,index)=>(
-            <Accordion key={index}>
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls="panel1-content"
-              id="panel1-header"
-            >
-              <Typography>{item?.question}</Typography>
-            </AccordionSummary>
-            <AccordionDetails>
-              <Typography>
-               {item?.answer}
-              </Typography>
-            </AccordionDetails>
-          </Accordion>
+          {faqs?.map((item,index) => (
+            <Accordion type="single" collapsible key={index}>
+              <AccordionItem value="item-1">
+                <AccordionTrigger className="text-white">
+                  {item?.question}
+                </AccordionTrigger>
+                <AccordionContent className="text-white">
+                {item?.answer}
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
           ))}
-          
-          </div> */}
         </div>
         <div className="w-5/12 h-full">
           <img

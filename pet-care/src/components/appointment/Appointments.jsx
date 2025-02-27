@@ -1,7 +1,7 @@
-import { React, useState } from "react";
+import { React, useContext, useState } from "react";
 // import { veterinaryDetails } from "@/src/assets/data/data";
-import { Calendar, MapPin,Clock } from "lucide-react";
-
+import { Calendar, MapPin, Clock } from "lucide-react";
+import { format, addMinutes, parseISO } from "date-fns";
 import {
   Select,
   SelectContent,
@@ -9,8 +9,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import profile from '../../assets/testimonial1.jpg'
+import profile from "../../assets/testimonial1.jpg";
 import { Link } from "react-router-dom";
+import useGet from "@/customHooks/useGet";
+import { AuthContext } from "@/context/AuthProvider";
+
 const Appointments = () => {
   const [filters, setFilters] = useState({
     gender: "",
@@ -19,7 +22,14 @@ const Appointments = () => {
     specialty: "",
     fee: "",
   });
+  const [status, setStatus] = useState("all");
+  const { user } = useContext(AuthContext);
 
+  const URL = import.meta.env.VITE_BACKEND_URL;
+  const { data } = useGet(
+    `${URL}/user/get-all-appointments?patientId=${user?.userId}&status=${status}`
+  );
+  console.log(data, "line 31");
   const handleChange = (field, value) => {
     setFilters((prev) => ({
       ...prev,
@@ -28,9 +38,18 @@ const Appointments = () => {
     console.log("Updated Selection:", setFilters);
   };
   console.log(filters, "these are selected filters");
+
+  const convertToIST = (utcDate) => {
+    const date = parseISO(utcDate); 
+    const istDate = addMinutes(date, 330);
+    return format(istDate, "yyyy-MM-dd"); 
+  };
+  
   return (
     <div className="flex flex-col gap-6">
-      <div className='text-4xl w-11/12 mx-auto my-4'><h3>My Appointments</h3></div>
+      <div className="text-4xl w-11/12 mx-auto my-4">
+        <h3>My Appointments</h3>
+      </div>
       <div>
         <div className="grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-5 p-4 bg-white items-center w-11/12 mx-auto my-4 gap-2">
           <div>
@@ -112,98 +131,101 @@ const Appointments = () => {
           </div>
         </div>
       </div>
-      <div className='w-11/12 mx-auto my-4'>
+      <div className="w-11/12 mx-auto my-4">
         <div>
           <div>
-            <h3 className='text-xl font-semibold'>Upcoming</h3>
+            <h3 className="text-xl font-semibold">Upcoming</h3>
             <div>
-                <div className='py-4 px-0'>
-                    <div className='flex flex-row items-center bg-white px-2 py-4 gap-4 w-full rounded-lg'>
-                       <div className='w-1/12 items-center'>
-                       <div className='w-14 h-14 rounded-full overflow-hidden'>
-                            <img src={profile} alt="this is a pic" />
-                        </div>
-                       </div>
-                        <div className='flex flex-col items-start w-8/12 gap-2'>
-                            <div className='text-[#0e1721]'>Doctor Amanda</div>
-                            <div className='flex flex-col gap-2'>
-                                <div className='flex text-sm flex-row items-center gap-2'><Calendar className='text-blue-500 text-sm'/>14-03-2025<Clock className='text-blue-500'/>10:00 am </div>
-                                <div className='flex text-sm flex-row items-center gap-2'><MapPin  className='text-blue-500 text-sm'/><span className='text-[#111623e0]'>Delhi road delhi</span></div>
-                            </div>
-                        </div>
-                        <div className='flex flex-col md:flex-row lg:flex-row gap-3 w-3/12'>
-                            <Link className="bg-blue-500 text-white px-4 py-2 rounded-sm hover:bg-[#3472d7]">View Details</Link>
-                            <Link className="bg-blue-500 text-white px-4 py-2 rounded-sm hover:bg-[#3472d7]">Cancel</Link>
-                        </div>
+              {data?.foundAppointments?.map((appointment, index) => (
+                <div className="py-4 px-0" key={index}>
+                  <div className="flex flex-row items-center bg-white px-2 py-4 gap-4 w-full rounded-lg">
+                    <div className="w-1/12 items-center">
+                      <div className="w-14 h-14 rounded-full overflow-hidden">
+                        <img
+                          src={appointment?.dentistId?.personalDetails?.image}
+                          alt="this is a pic"
+                        />
+                      </div>
                     </div>
-                </div>
-                <div className='py-4 px-0'>
-                    <div className='flex flex-row items-center bg-white px-2 py-4 gap-4 w-full rounded-lg'>
-                       <div className='w-1/12 items-center'>
-                       <div className='w-14 h-14 rounded-full overflow-hidden'>
-                            <img src={profile} alt="this is a pic" />
+                    <div className="flex flex-col items-start w-8/12 gap-2">
+                      <div className="text-[#0e1721]">
+                        {appointment?.dentistId?.personalDetails?.prefix}.&nbsp;
+                        {appointment?.dentistId?.personalDetails?.Firstname}
+                        &nbsp;
+                        {appointment?.dentistId?.personalDetails?.lastName}
+                      </div>
+                      <div className="flex flex-col gap-2">
+                        <div className="flex text-sm flex-row items-center gap-2">
+                          <Calendar className="text-blue-500 text-sm" />
+                          {appointment?.timing?.date}
+                          <Clock className="text-blue-500" />
+                          {appointment?.timing?.slot?.startTime}&nbsp;
                         </div>
-                       </div>
-                        <div className='flex flex-col items-start w-8/12 gap-2'>
-                            <div className='text-[#0e1721]'>Doctor Amanda</div>
-                            <div className='flex flex-col gap-2'>
-                                <div className='flex text-sm flex-row items-center gap-2'><Calendar className='text-blue-500 text-sm'/>14-03-2025<Clock className='text-blue-500'/>10:00 am </div>
-                                <div className='flex text-sm flex-row items-center gap-2'><MapPin  className='text-blue-500 text-sm'/><span className='text-[#111623e0]'>Delhi road delhi</span></div>
-                            </div>
+                        <div className="flex text-sm flex-row items-center gap-2">
+                          <MapPin className="text-blue-500 text-sm" />
+                          <span className="text-[#111623e0]">
+                            {appointment?.clinicId?.clinicAddress},
+                            {appointment?.clinicId?.area},
+                            {appointment?.clinicId?.city},
+                            {appointment?.clinicId?.state}-
+                            {appointment?.clinicId?.clinicPincode}
+                          </span>
                         </div>
-                        <div className='flex flex-col md:flex-row lg:flex-row gap-3 w-3/12'>
-                            <Link className="bg-blue-500 text-white px-4 py-2 rounded-sm hover:bg-[#3472d7]">View Details</Link>
-                            <Link className="bg-blue-500 text-white px-4 py-2 rounded-sm hover:bg-[#3472d7]">Cancel</Link>
-                        </div>
+                      </div>
                     </div>
-                </div>
-                <div className='py-4 px-0'>
-                    <div className='flex flex-row items-center bg-white px-2 py-4 gap-4 w-full rounded-lg'>
-                       <div className='w-1/12 items-center'>
-                       <div className='w-14 h-14 rounded-full overflow-hidden'>
-                            <img src={profile} alt="this is a pic" />
-                        </div>
-                       </div>
-                        <div className='flex flex-col items-start w-8/12 gap-2'>
-                            <div className='text-[#0e1721]'>Doctor Amanda</div>
-                            <div className='flex flex-col gap-2'>
-                                <div className='flex text-sm flex-row items-center gap-2'><Calendar className='text-blue-500 text-sm'/>14-03-2025<Clock className='text-blue-500'/>10:00 am </div>
-                                <div className='flex text-sm flex-row items-center gap-2'><MapPin  className='text-blue-500 text-sm'/><span className='text-[#111623e0]'>Delhi road delhi</span></div>
-                            </div>
-                        </div>
-                        <div className='flex flex-col md:flex-row lg:flex-row gap-3 w-3/12'>
-                            <Link className="bg-blue-500 text-white px-4 py-2 rounded-sm hover:bg-[#3472d7]">View Details</Link>
-                            <Link className="bg-blue-500 text-white px-4 py-2 rounded-sm hover:bg-[#3472d7]">Cancel</Link>
-                        </div>
+                    <div className="flex flex-col md:flex-col lg:flex-col gap-3 w-3/12">
+                    <div className='text-sm text-[#b0aeae]'>Booked on:&nbsp;{convertToIST(appointment?.createdAt)}</div>
+                      <div className='flex flex-col md:flex-row lg:flex-row gap-3'>
+                      <Link className="bg-blue-500 text-white px-4 py-2 rounded-sm hover:bg-[#3472d7]">
+                        View Details
+                      </Link>
+                      <Link className="bg-blue-500 text-white px-4 py-2 rounded-sm hover:bg-[#3472d7]">
+                        Cancel
+                      </Link>
+                      </div>
                     </div>
+                  </div>
                 </div>
+              ))}
             </div>
           </div>
         </div>
         <div>
-        <h3 className='text-xl font-semibold'>Past</h3>
+          <h3 className="text-xl font-semibold">Past</h3>
           <div>
-                <div className='py-4 px-0'>
-                    <div className='flex flex-row items-center bg-white px-2 py-4 gap-4 w-full rounded-lg'>
-                       <div className='w-1/12 items-center'>
-                       <div className='w-14 h-14 rounded-full overflow-hidden'>
-                            <img src={profile} alt="this is a pic" />
-                        </div>
-                       </div>
-                        <div className='flex flex-col items-start w-8/12 gap-2'>
-                            <div className='text-[#0e1721]'>Doctor Amanda</div>
-                            <div className='flex flex-col gap-2'>
-                                <div className='flex text-sm flex-row items-center gap-2'><Calendar className='text-blue-500 text-sm'/>14-03-2025<Clock className='text-blue-500'/>10:00 am </div>
-                                <div className='flex text-sm flex-row items-center gap-2'><MapPin  className='text-blue-500 text-sm'/><span className='text-[#111623e0]'>Delhi road delhi</span></div>
-                            </div>
-                        </div>
-                        <div className='flex flex-col md:flex-row lg:flex-row gap-3 w-3/12'>
-                            <Link className="bg-blue-500 text-white px-4 py-2 rounded-sm hover:bg-[#3472d7]">View Details</Link>
-                            <Link className="bg-blue-500 text-white px-4 py-2 rounded-sm hover:bg-[#3472d7]">Cancel</Link>
-                        </div>
-                    </div>
+            <div className="py-4 px-0">
+              <div className="flex flex-row items-center bg-white px-2 py-4 gap-4 w-full rounded-lg">
+                <div className="w-1/12 items-center">
+                  <div className="w-14 h-14 rounded-full overflow-hidden">
+                    <img src={profile} alt="this is a pic" />
+                  </div>
                 </div>
+                <div className="flex flex-col items-start w-8/12 gap-2">
+                  <div className="text-[#0e1721]">Doctor Amanda</div>
+                  <div className="flex flex-col gap-2">
+                    <div className="flex text-sm flex-row items-center gap-2">
+                      <Calendar className="text-blue-500 text-sm" />
+                      14-03-2025
+                      <Clock className="text-blue-500" />
+                      10:00 am{" "}
+                    </div>
+                    <div className="flex text-sm flex-row items-center gap-2">
+                      <MapPin className="text-blue-500 text-sm" />
+                      <span className="text-[#111623e0]">Delhi road delhi</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="flex flex-col md:flex-row lg:flex-row gap-3 w-3/12">
+                  <Link className="bg-blue-500 text-white px-4 py-2 rounded-sm hover:bg-[#3472d7]">
+                    View Details
+                  </Link>
+                  <Link className="bg-blue-500 text-white px-4 py-2 rounded-sm hover:bg-[#3472d7]">
+                    Cancel
+                  </Link>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
       </div>
     </div>

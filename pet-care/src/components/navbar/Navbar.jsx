@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react"; // Hamburger menu icons
 import Logo from "../../assets/logo2.png";
+import { User } from "lucide-react";
+import Cookies from "js-cookie";
+import { AuthContext } from "@/context/AuthProvider";
 
 const NAV_LINKS = [
   { path: "/", label: "Home" },
@@ -11,7 +14,9 @@ const NAV_LINKS = [
   { path: "/contact-us", label: "Contact Us" },
 ];
 
+
 const Navbar = () => {
+  const{user,IsLoggedIn}=useContext(AuthContext)
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -48,12 +53,12 @@ const Navbar = () => {
         </ul>
 
         {/* Login Button */}
-        <Link
-          to="/login"
-          className="hidden lg:block px-5 py-2 text-white text-center rounded-full w-36 bg-green-500"
+        {<Link
+          to={IsLoggedIn?"/dashboard":"/login"}
+          className={IsLoggedIn?" border-gray-100 border-2 rounded-full w-12 h-12 flex items-center justify-center lg:text-lg":"hidden lg:block px-5 py-2 text-white text-center rounded-full w-36 bg-green-500"}
         >
-          Login
-        </Link>
+          {IsLoggedIn?<User/>:"Login"}
+        </Link>}
       </div>
 
       {/* Mobile Navigation with Smooth Transition */}

@@ -16,7 +16,7 @@ const usePost = (url) => {
       console.log(response,'line 12 use post')
       setData(response?.data);
       toast.success(response?.data?.message)
-      return data
+      return response?.data
       
     } catch (error) {
       setError(error);

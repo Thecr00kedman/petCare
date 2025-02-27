@@ -1,6 +1,11 @@
 import React from "react";
 import Doctors from "../../assets/doctors.png";
+import { useNavigate } from "react-router-dom";
 const Cta = () => {
+  const navigate=useNavigate()
+  const handleNavigate=(url)=>{
+    navigate(`${url}`)
+  }
   return (
     <div className="relative">
       <div className="bg-blue-500 w-full h-[85%] absolute bottom-0" style={{ zIndex: -10 }}></div>
@@ -16,7 +21,7 @@ const Cta = () => {
             services provided
           </span>
           <div className="flex flex-row gap-8 items-start m-0">
-            <button className="px-3 py-5 w-2/5 text-sm font-semi-bold rounded-full bg-[linear-gradient(180deg,_#04CE78_37.5%,_#DDFFF1_100%)] shadow-custom uppercase">Book Appointment</button>
+            <button className="px-3 py-5 w-2/5 text-sm font-semi-bold rounded-full bg-[linear-gradient(180deg,_#04CE78_37.5%,_#DDFFF1_100%)] shadow-custom uppercase" onClick={()=>handleNavigate('/vets')}>Book Appointment</button>
             <button className="px-3 py-5 w-2/5 text-sm font-semi-bold rounded-full bg-[linear-gradient(180deg,_#C2D4FF_37.5%,_#F0F4FF_100%)] shadow-custom uppercase">Get Free Consulting</button>
           </div>
         </div>
