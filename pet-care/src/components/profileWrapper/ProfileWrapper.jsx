@@ -21,6 +21,7 @@ import profile from "../../assets/testimonial1.jpg";
 import usePost from "../../customHooks/usePost";
 import { useContext } from 'react';
 import { AuthContext } from '../../context/AuthProvider';
+import Cookies from 'js-cookie';
 
 const ProfileWrapper = () => {
     const {setIsLoggedIn,user}=useContext(AuthContext)
@@ -33,6 +34,7 @@ const ProfileWrapper = () => {
      if(response){
         console.log(response,'line 30')
         setIsLoggedIn(false)
+        Cookies.remove('userInfo')
         navigate('/login')
 
      }
