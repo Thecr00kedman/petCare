@@ -23,13 +23,13 @@ const DoctorsSlider = () => {
           className="w-full my-12">
       <div>
         <div className="flex flex-row justify-center items-center text-center">
-          <h1 className="text-lg text-[#04CE78] uppercase">Expert doctors</h1>
+          <h1 className="text-sm md:text-lg lg:text-lg text-[#04CE78] uppercase">Expert doctors</h1>
         </div>
         <div className="flex flex-row justify-center items-center text-center font-semibold text-[#000D44]">
-          <h1 className="text-5xl">Meet our professional Doctors</h1>
+          <h1 className="text-2xl md:text-3xl lg:text-5xl">Meet our professional Doctors</h1>
         </div>
       </div>
-      <div className="w-11/12 mx-auto my-16">
+      <div className="w-11/12 mx-auto my-6 md:my-11 lg:my-16">
         <Swiper loop={true} autoplay={{
                 delay: 2000,
                 disableOnInteraction: false,
@@ -37,7 +37,7 @@ const DoctorsSlider = () => {
               modules={[Autoplay]}
               breakpoints={{
                 0:{
-                  slidesPerView:1,
+                  slidesPerView:2,
                   
                 },
                 640: {
@@ -70,7 +70,7 @@ const DoctorsSlider = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <i className="fab fa-facebook-square flex justify-center items-center text-black bg-white h-10 w-10 text-3xl  rounded-full"></i>
+          <i className="fab fa-facebook-square flex justify-center items-center text-black bg-white h-4 w-4 md:h-7 md:w-7 lg:h-10 lg:w-10 text-xl md:text-2xl lg:tex-3xl rounded-full"></i>
         </a>
 
         {/* Twitter Icon */}
@@ -79,7 +79,7 @@ const DoctorsSlider = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <i className="fab fa-twitter-square flex justify-center items-center text-black bg-white h-10 w-10 text-3xl  rounded-full"></i>
+          <i className="fab fa-twitter-square flex justify-center items-center text-black bg-white h-4 w-4 md:h-7 md:w-7 lg:h-10 lg:w-10 text-xl md:text-2xl lg:tex-3xl rounded-full"></i>
         </a>
 
         {/* LinkedIn Icon */}
@@ -88,16 +88,16 @@ const DoctorsSlider = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <i className="fab fa-linkedin flex justify-center items-center text-black bg-white h-10 w-10 text-3xl  rounded-full"></i>
+          <i className="fab fa-linkedin flex justify-center items-center text-black bg-white h-4 w-4 md:h-7 md:w-7 lg:h-10 lg:w-10 text-xl md:text-2xl lg:tex-3xl rounded-full"></i>
         </a>
       </div>
     </div>
   </div>
 
-  <div className="text-xl font-semibold text-center text-[#000D44]">
+  <div className="text-sm md:text-lg xl:text-xl font-semibold text-center text-[#000D44]">
     {item?.personalDetails?.prefix}.&nbsp;{item?.personalDetails?.Firstname}&nbsp;{item?.personalDetails?.lastName}
   </div>
-  <div className="text-sm text-center text-[#788094]">{item?.personalDetails?.specialty}</div>
+  <div className="text-xs md:text-sm lg:text-sm text-center text-[#788094]">{item?.personalDetails?.specialty}</div>
 </div>
 
             </SwiperSlide>

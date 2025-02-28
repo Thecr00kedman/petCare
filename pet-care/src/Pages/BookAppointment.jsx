@@ -188,27 +188,20 @@ const BookAppointment = () => {
   return (
     <div className="flex flex-col lg:flex-row gap-4 px-4 py-6 w-11/12 mx-auto my-4">
       {/* Date & Time Selection */}
-      <div className="w-full lg:w-1/2 bg-white rounded-xl shadow-lg p-6 my-8">
+      <div className="w-full lg:w-1/2 bg-white rounded-xl shadow-lg p-6 md:p-8 lg:p-8 my-8">
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-2xl font-semibold text-gray-900">
             What time works best for a quick call?
           </h2>
-          <Button
-            variant="ghost"
-            size="icon"
-            className="hover:bg-gray-100 rounded-full"
-          >
-            {/* <X className="h-5 w-5 text-gray-500" /> */}
-          </Button>
         </div>
 
         {/* Date Selection */}
         <div className="bg-gray-50 rounded-lg p-4 mb-8">
           <div className="flex justify-between items-center mb-4">
-            <Button variant="ghost" size="icon" className="text-gray-500">
+            {/* <Button variant="ghost" size="icon" className="text-gray-500">
               <ChevronLeft className="h-5 w-5" />
-            </Button>
-            <div className="grid grid-cols-7 gap-4 text-center flex-1">
+            </Button> */}
+            <div className="grid grid-cols-3 md:grid-cols-7 lg:grid-cols-7 gap-4 text-center flex-1">
               {days.map((item) => (
                 <button
                   key={item.fullDate}
@@ -225,9 +218,9 @@ const BookAppointment = () => {
                 </button>
               ))}
             </div>
-            <Button variant="ghost" size="icon" className="text-gray-500">
+            {/* <Button variant="ghost" size="icon" className="text-gray-500">
               <ChevronRight className="h-5 w-5" />
-            </Button>
+            </Button> */}
           </div>
         </div>
 

@@ -35,29 +35,29 @@ const Faq = () => {
       className="flex flex-col w-full"
       style={{ backgroundImage: `url(${BG})` }}
     >
-      <div className="flex flex-row w-full bg-cover bg-center h-screen items-center ">
-        <div className="w-6/12 mx-auto my-11 flex gap-8 flex-col">
+      <div className="flex flex-row w-11/12 mx-auto my-2 lg:gap-6 bg-cover bg-center h-full md:h-screen lg:h-screen items-center ">
+        <div className="w-11/12 mx-auto my-8 md:my-7 lg:my-11 flex gap-4 md:gap-8 flex-col md:w-11/12 lg:w-7/12 lg:gap-8">
           <div>
-            <div className="text-lg uppercase text-[#04CE78]">Faqs</div>
-            <div className="text-5xl font-semibold text-white">
+            <div className="text-sm md:text-lg lg:text-lg uppercase text-[#04CE78]">Faqs</div>
+            <div className="text-2xl md:text-3xl lg:text-5xl font-semibold text-white">
               Frequently Asked Have <br />
               Any Question?
             </div>
           </div>
           {faqs?.map((item,index) => (
-            <Accordion type="single" collapsible key={index}>
-              <AccordionItem value="item-1">
-                <AccordionTrigger className="text-white">
-                  {item?.question}
+            <Accordion type="single" className='text-start'collapsible key={index}>
+              <AccordionItem className='text-start'value="item-1">
+                <AccordionTrigger className="text-white text-sm md:text-lg lg:text-lg hover:no-underline">
+                  <div className="w-full text-start">{item?.question}</div>
                 </AccordionTrigger>
-                <AccordionContent className="text-white">
-                {item?.answer}
+                <AccordionContent className="text-white text-sm md:text-lg lg:text-lg">
+                <div className="w-full text-start">{item?.answer}</div>
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
           ))}
         </div>
-        <div className="w-5/12 h-full">
+        <div className="hidden md:flex lg:flex w-5/12 h-full">
           <img
             src={Doctor}
             className="h-full w-full object-contain"

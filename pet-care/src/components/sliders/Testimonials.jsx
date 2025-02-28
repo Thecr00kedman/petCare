@@ -32,10 +32,10 @@ const Testimonials = () => {
   //   console.log(testimonials,'line 22')
   return (
     <div className=" bg-white">
-      <div className="flex w-11/12 mx-auto flex-col p-16 gap-7">
-        <div className="flex flex-col gap-6 justify-center text-center items-center m-16">
-          <div className="text-lg text-[#04CE78] font-bold">TESTIMONIALS</div>
-          <div className="text-5xl text-[#000D44] font-semibold">
+      <div className="flex w-11/12 mx-auto flex-col sm:p-2 md:p-6 lg:p-16 gap-7">
+        <div className="flex flex-col gap-6 justify-center text-center items-center m-6 md:m-11 lg:m-16">
+          <div className="text-sm md:text-lg lg:text-lg text-[#04CE78] font-bold">TESTIMONIALS</div>
+          <div className="text-2xl md:text-3xl lg:text-5xl text-[#000D44] font-semibold">
             What Our Customers Says?
           </div>
         </div>
@@ -66,31 +66,31 @@ const Testimonials = () => {
             {testimonials?.map((item, index) => (
               <SwiperSlide key={index}>
                 <div className="flex flex-col gap-8 p-6 bg-[#F5F7FA] rounded-2xl">
-                  <div className="text-2xl text-yellow-500">
+                  <div className="text:lg md:text-xl lg:text-2xl text-yellow-500">
                     <FontAwesomeIcon icon={faStar} />
                     <FontAwesomeIcon icon={faStar} />
                     <FontAwesomeIcon icon={faStar} />
                     <FontAwesomeIcon icon={faStar} />
                     <FontAwesomeIcon icon={faStar} />
                   </div>
-                  <div className="text-lg text-[#788094]">{item?.comment}</div>
+                  <div className="text-sm md:text-lg lg:text-lg text-[#788094]">{item?.comment}</div>
                   <div className="flex flex-row justify-between">
                     <div className="flex flex-row gap-7">
                       <div className="h-16 w-16 rounded-full overflow-hidden">
                         <img
                           src={item?.photo}
                           className="w-full h-full object-contain"
-                          alt=""
+                          alt="photo"
                         />
                       </div>
                       <div>
-                        <div className="text-xl font-bold text-[#000D44]">
+                        <div className="text-sm md:text-lg lg:text-xl font-bold text-[#000D44]">
                           {item?.name}
                         </div>
-                        <div className="text-[#788094]">{item?.location}</div>
+                        <div className="text-[#788094] text-sm md:text-lg lg:text-xl">{item?.location}</div>
                       </div>
                     </div>
-                    <div className="h-16 w-16">
+                    <div className="h-12 w-12 md:h-16 md:w-16 lg:h-16 lg:w-16">
                       <img
                         className="h-full w-full object-contain"
                         src={Comma}
