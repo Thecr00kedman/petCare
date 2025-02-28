@@ -1,22 +1,19 @@
-import React, { useEffect, useState } from "react";
-import { veterinaryDetails } from "../assets/data/data";
-import Clinic from "../assets/clinic.jpg";
-import Clinic1 from "../assets/clinic12.jpeg";
-import { Button } from "../components/ui/button";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import FacebookIcon from "@mui/icons-material/Facebook";
-import RadioButtonCheckedIcon from "@mui/icons-material/RadioButtonChecked";
+import { Textarea } from "@/components/ui/textarea";
 import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import RadioButtonCheckedIcon from "@mui/icons-material/RadioButtonChecked";
+import StarBorderIcon from "@mui/icons-material/StarBorder";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
-import { Phone, MapPin, Mail, Briefcase } from "lucide-react";
-import StarBorderIcon from "@mui/icons-material/StarBorder";
+import { Briefcase, Calendar, IndianRupee, Mail, MapPin, Phone, Star } from "lucide-react";
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import Clinic1 from "../assets/clinic12.jpeg";
+import { veterinaryDetails } from "../assets/data/data";
+import { Button } from "../components/ui/button";
 import useGet from "../customHooks/useGet";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { IndianRupee, Calendar,Star  } from "lucide-react";
-
+import { BounceLoader  } from "react-spinners";
 const Doctor = () => {
   veterinaryDetails;
   const [foundDoctors, setFoundDoctors] = useState([]);
@@ -51,10 +48,17 @@ const Doctor = () => {
   return (
     <div className="w-full my-4">
       <div className="flex w-11/12 mx-auto my-0 flex-col md:flex-row lg:flex-row gap-4">
-        {veterinaryDetails?.length > 0 && (
-          <div
+         {
+          loading?(
+            <div className="flex w-full flex-col md:flex-row lg:flex-row gap-14 justify-center items-center h-screen">
+              <BounceLoader color='#22c55e'/>
+              </div>
+          )
+          :data?
+          (
+            <div
             className="flex w-full flex-col md:flex-row lg:flex-row gap-14"
-            key={veterinaryDetails[0]?.id}
+            
           >
             <div className=" flex flex-col h-auto items-center gap-3 rounded-md w-full md:w-3/12 lg:w-3/12 px-4 py-6 bg-white">
               <div className="px-4">
@@ -177,9 +181,9 @@ const Doctor = () => {
                     <div className="text-[#28a745]">
                       <ArrowCircleRightIcon />
                     </div>
-                    <div className="text-[#788094]">
+                    {/* <div className="text-[#788094]">
                       {veterinaryDetails[0]?.specialty}
-                    </div>
+                    </div> */}
                   </div>
                   <div className="flex flex-row items-center gap-2">
                     <div className="text-[#28a745]">
@@ -441,7 +445,14 @@ const Doctor = () => {
               </div>
             </div>
           </div>
-        )}
+          )
+          :(
+            <div>
+              {error}
+            </div>
+          )
+         }
+
       </div>
     </div>
   );

@@ -201,8 +201,8 @@ const Vets = () => {
           </div>
           <div className="grid py-6 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-6 w-11/12 mx-auto my-0">
             {loading ? (
-              <div>
-                <PacmanLoader />
+              <div className="w-12/12 bg-[#f7f7f5] flex flex-col justify-center items-center">
+                <PacmanLoader color="green"/>
               </div>
             ) : dentistsData?.data?.dentists ? (
               <div className="w-12/12 bg-[#f7f7f5]">
