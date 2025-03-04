@@ -11,10 +11,10 @@ const Pagination = ({ paginationData, setPage }) => {
   return (
     <ReactPaginate
       className='pagination flex flex-row items-center justify-center gap-2 p-4'
-      pageClassName="page-class text-lg py-2 px-4 border-[#dadada] border-2 rounded-md shadow-btn"
-      activeClassName="active-page text-lg py-2 px-4 rounded-md bg-[#5271FF] text-white shadow-btn"
-      nextClassName="next-class text-lg py-2 px-4 border-[#dadada] border-2 rounded-md shadow-btn"
-      previousClassName='text-lg py-2 px-4 border-[#dadada] border-2 rounded-md shadow-btn'
+      pageClassName="page-class text-sm py-1 px-2 border-[#dadada] border-2 rounded-md shadow-btn"
+      activeClassName="active-page text-sm py-1 px-2 rounded-md bg-[#5271FF] text-white shadow-btn"
+      nextClassName="next-class text-sm py-1 px-2 border-[#dadada] border-2 rounded-md shadow-btn"
+      previousClassName='text-sm py-1 px-2 border-[#dadada] border-2 rounded-md shadow-btn'
       disabledClassName="disabled-page"
       breakClassName="break-class"
       previousLabel="previous"
